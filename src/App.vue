@@ -1,20 +1,26 @@
 <template>
   <div class="app">
-    <button class="app__btn">Test</button>
+    <div class="container">
+      <Table />
+    </div>
   </div>
 </template>
 
 <script>
+import Table from '@/components/table.vue'
+
 export default {
   name: 'App',
-  components: {},
+  components: {
+    Table,
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-.app {
-  &__btn {
-    transform: rotate(90deg);
-  }
+.container {
+  max-width: 900px;
+  width: 90%;
+  margin: 50px auto;
 }
 </style>
