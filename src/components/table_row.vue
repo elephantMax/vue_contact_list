@@ -14,12 +14,18 @@
         {{ user.number }}
       </span>
     </div>
-    <div
-      v-if="!!userChildren.length && userChildrenIsVisible"
-      class="table-row__children"
-    >
-      <Table-Row v-for="child in userChildren" :key="child.id" :user="child" />
-    </div>
+    <transition name="children">
+      <div
+        v-if="!!userChildren.length && userChildrenIsVisible"
+        class="table-row__children"
+      >
+        <Table-Row
+          v-for="child in userChildren"
+          :key="child.id"
+          :user="child"
+        />
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -64,11 +70,22 @@ export default {
   }
 
   &__cell {
+    z-index: 0;
     @include table-cell;
 
     &--number {
       font-weight: 600;
     }
   }
+}
+
+.children-enter-active,
+.children-leave-active {
+  transition: transform 0.5s, opacity 0.3s;
+}
+.children-enter,
+.children-leave-to {
+  transform: translateX(-50%);
+  opacity: 0;
 }
 </style>
