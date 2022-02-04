@@ -73,7 +73,6 @@ export default {
 @import '../assets/mixins.scss';
 
 .table {
-  max-width: 800px;
   overflow: auto;
   max-height: 700px;
   box-shadow: 0px 0px 4px rgba(#000, 0.5);

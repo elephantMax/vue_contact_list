@@ -1,9 +1,30 @@
+@import './variables.scss';
+
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 html {
   font-family: sans-serif;
+  font-size: $font-size-default;
+}
+
+.container {
+  max-width: 900px;
+  width: 90%;
+  margin: 50px auto;
+}
+
+.btn {
+  padding: 8px 15px;
+  border: none;
+  cursor: pointer;
+  font-size: $font-size-default;
+  background-color: transparent;
+  border-radius: 10px;
+
+  &--primary {
+    color: #fff;
+    background-color: $light-blue;
+  }
 }

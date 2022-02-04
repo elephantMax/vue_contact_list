@@ -1,7 +1,12 @@
 <template>
-  <div class="app">
+  <div class="home">
     <div class="container">
-      <Table />
+      <div class="home__content">
+        <button class="btn btn--primary">
+          Добавить пользователя
+        </button>
+        <Table class="home__table" />
+      </div>
     </div>
   </div>
 </template>
@@ -18,9 +23,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
-  max-width: 900px;
-  width: 90%;
-  margin: 50px auto;
+.home {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  &__table {
+    margin-top: 10px;
+    width: 100%;
+  }
 }
 </style>
