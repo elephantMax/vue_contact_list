@@ -1,4 +1,5 @@
 @import './variables.scss';
+@import './mixins.scss';
 
 * {
   box-sizing: border-box;
@@ -26,5 +27,16 @@ html {
   &--primary {
     color: #fff;
     background-color: $light-blue;
+  }
+}
+
+.input,
+.select {
+  @include input;
+}
+
+.select {
+  &__option {
+    font-size: $font-size-small;
   }
 }
