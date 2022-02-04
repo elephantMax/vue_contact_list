@@ -10,7 +10,7 @@
         </span>
       </div>
       <div class="table__rows">
-        <TableRow v-for="user in users" :key="user.id" :user="user" />
+        <TableRow v-for="user in parentUsers" :key="user.id" :user="user" />
       </div>
     </div>
   </div>
@@ -27,6 +27,9 @@ export default {
   },
   computed: {
     ...mapGetters(['users']),
+    parentUsers() {
+      return this.users.filter(user => user.boss === null)
+    },
   },
 }
 </script>

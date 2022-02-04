@@ -23,6 +23,7 @@ html {
   font-size: $font-size-default;
   background-color: transparent;
   border-radius: 10px;
+  user-select: none;
 
   &:disabled {
     opacity: 0.5;

@@ -1,26 +1,30 @@
 <template>
   <div class="table-row">
     <div class="table-row__data">
-      <span
-        class="table-row__cell table-row__cell--name"
-        @click="userChildrenIsVisible = !userChildrenIsVisible"
-      >
+      <div class="table-row__cell table-row__cell--name">
+        <span
+          v-if="!!userChildren.length"
+          class="btn"
+          @click="userChildrenIsVisible = !userChildrenIsVisible"
+          >{{ userChildrenIsVisible ? '-' : '+' }}</span
+        >
         {{ user.name }}
-      </span>
+      </div>
       <span class="table-row__cell table-row__cell--number">
         {{ user.number }}
       </span>
     </div>
     <div
-      v-if="user.children && userChildrenIsVisible"
+      v-if="!!userChildren.length && userChildrenIsVisible"
       class="table-row__children"
     >
-      <Table-Row v-for="child in user.children" :key="child.id" :user="child" />
+      <Table-Row v-for="child in userChildren" :key="child.id" :user="child" />
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'Table-Row',
   props: {
@@ -31,8 +35,14 @@ export default {
   },
   data() {
     return {
-      userChildrenIsVisible: true,
+      userChildrenIsVisible: false,
     }
+  },
+  computed: {
+    ...mapGetters(['users']),
+    userChildren() {
+      return this.users.filter(user => user.boss === this.user.id)
+    },
   },
 }
 </script>
