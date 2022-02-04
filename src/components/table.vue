@@ -5,7 +5,7 @@
         <span class="table__cell table__cell--name">
           Имя
         </span>
-        <span class="table__cell table__cell--phone">
+        <span class="table__cell table__cell--number">
           Телефон
         </span>
       </div>
@@ -17,54 +17,16 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 import TableRow from '@/components/table_row'
 
 export default {
   components: {
     TableRow,
   },
-  data() {
-    return {
-      users: [
-        {
-          id: 1,
-          name: 'Maxin',
-          phone: 1234,
-          children: [],
-        },
-        {
-          id: 2,
-          name: 'Maxin1',
-          phone: 1234,
-          children: [
-            {
-              id: 12,
-              name: 'Maxin',
-              phone: 1234,
-              children: [],
-            },
-          ],
-        },
-        {
-          id: 3,
-          name: 'Maxin2',
-          phone: 1234,
-          children: [],
-        },
-        {
-          id: 4,
-          name: 'Maxin3',
-          phone: 1234,
-          children: [],
-        },
-        {
-          id: 5,
-          name: 'Maxin4',
-          phone: 1234,
-          children: [],
-        },
-      ],
-    }
+  computed: {
+    ...mapGetters(['users']),
   },
 }
 </script>

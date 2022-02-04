@@ -15,6 +15,7 @@
 <script>
 import Table from '@/components/table.vue'
 import ModalCreate from '@/components/modal_create.vue'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'App',
@@ -28,12 +29,16 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['getUsers']),
     openModal() {
       this.modalIsVisible = true
     },
     closeModal() {
       this.modalIsVisible = false
     },
+  },
+  mounted() {
+    this.getUsers()
   },
 }
 </script>

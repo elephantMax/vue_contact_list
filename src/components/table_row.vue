@@ -7,12 +7,12 @@
       >
         {{ user.name }}
       </span>
-      <span class="table-row__cell table-row__cell--phone">
-        {{ user.phone }}
+      <span class="table-row__cell table-row__cell--number">
+        {{ user.number }}
       </span>
     </div>
     <div
-      v-if="user.children.length && userChildrenIsVisible"
+      v-if="user.children && userChildrenIsVisible"
       class="table-row__children"
     >
       <Table-Row v-for="child in user.children" :key="child.id" :user="child" />
@@ -56,7 +56,7 @@ export default {
   &__cell {
     @include table-cell;
 
-    &--phone {
+    &--number {
       font-weight: 600;
     }
   }
