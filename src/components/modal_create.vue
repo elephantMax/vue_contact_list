@@ -18,8 +18,12 @@
           <label class="form__label">
             Начальник
           </label>
-          <select v-model="boss" class="form__input select">
-            <option class="select__option" selected hidden :value="null">
+          <select
+            v-model="boss"
+            class="form__input select"
+            :disabled="!selectIsEnabled"
+          >
+            <option class="select__option" selected :value="null">
               Выберите пользователя
             </option>
             <option
@@ -61,6 +65,9 @@ export default {
     }),
     buttonIsActive() {
       return this.name !== '' && this.number !== ''
+    },
+    selectIsEnabled() {
+      return this.options.length > 0
     },
   },
   methods: {

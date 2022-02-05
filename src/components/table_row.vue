@@ -3,8 +3,8 @@
     <div class="table-row__data">
       <div class="table-row__cell table-row__cell--name">
         <span
-          v-if="!!userChildren.length"
-          class="btn"
+          v-if="userChildren.length > 0"
+          class="table-row__btn btn"
           @click="userChildrenIsVisible = !userChildrenIsVisible"
           >{{ userChildrenIsVisible ? '-' : '+' }}</span
         >
@@ -16,7 +16,7 @@
     </div>
     <transition name="children">
       <div
-        v-if="!!userChildren.length && userChildrenIsVisible"
+        v-if="userChildren.length > 0 && userChildrenIsVisible"
         class="table-row__children"
       >
         <Table-Row
@@ -45,9 +45,9 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['users']),
+    ...mapGetters(['sortedUsers']),
     userChildren() {
-      return this.users.filter(user => user.boss === this.user.id)
+      return this.sortedUsers.filter(user => user.boss === this.user.id)
     },
   },
 }
@@ -70,12 +70,21 @@ export default {
   }
 
   &__cell {
+    position: relative;
     z-index: 0;
     @include table-cell;
 
     &--number {
       font-weight: 600;
     }
+  }
+
+  &__btn {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    padding: 10px 10px;
   }
 }
 
