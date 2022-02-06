@@ -35,7 +35,7 @@
             >
           </select>
         </div>
-        <button class="btn btn--primary" :disabled="!buttonIsActive">
+        <button class="btn btn--primary" :disabled="!buttonIsEnabled">
           Сохранить
         </button>
       </form>
@@ -63,7 +63,7 @@ export default {
     ...mapGetters({
       options: 'users',
     }),
-    buttonIsActive() {
+    buttonIsEnabled() {
       return this.name !== '' && this.number !== ''
     },
     selectIsEnabled() {
@@ -77,7 +77,7 @@ export default {
       Object.assign(this.$data, getInitState())
     },
     submit() {
-      if (this.buttonIsActive) {
+      if (this.buttonIsEnabled) {
         const user = {
           name: this.name,
           number: this.number,
